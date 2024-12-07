@@ -1,0 +1,35 @@
+{
+  "name": "electron-nuxt-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev:nuxt": "cd nuxt && npx nuxt dev",
+    "dev:main": "cd electron && cross-env NODE_ENV=development npx vite build --watch --mode development",
+    "dev:electron": "cross-env NODE_ENV=development electron ./electron/dist/main.js",
+    "dev": "concurrently \"npm run dev:nuxt\" \"npm run dev:main\" \"npm run dev:electron\"",
+    "clean:main": "rimraf electron/dist",
+    "clean:nuxt": "cd nuxt && npx nuxt cleanup",
+    "clean:electron": "rimraf dist_electron",
+    "clean": "npm run clean:main && npm run clean:nuxt && npm run clean:electron",
+    "build:nuxt": "cd nuxt && npx nuxt generate",
+    "build:main": "cd electron && npx vite build",
+    "build": "npm run build:nuxt && npm run build:main",
+    "dist": "npm run build && cross-env NODE_ENV=production electron-builder --config electron-build.yml",
+    "extract": "npx @electron/asar extract dist_electron/win-unpacked/resources/app.asar app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/electron": "^1.4.38",
+    "@types/node": "^22.10.1",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}

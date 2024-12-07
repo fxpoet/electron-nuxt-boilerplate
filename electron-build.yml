@@ -1,0 +1,16 @@
+appId: com.mycompany.myapp
+productName: MyApp
+directories:
+  output: dist_electron
+  app: .
+  buildResources: electron/build
+files:
+  - "package.json"
+  - from: electron/dist
+    to: .
+  - from: nuxt/.output/public
+    to: nuxt
+asar: true
+win:
+  target:
+    - nsis
