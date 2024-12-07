@@ -1,4 +1,10 @@
 
+- Electron 33 + TypeScript + Vite
+- Electron Builder 25.1.8
+- Nuxt 3.14
+- Tailwindcss 6.12
+
+
 1. 개발모드
 - npm run dev:nuxt : Nuxt 포트열기
 - npm run dev:main : 일렉트론 TS 번들링 (watch)
